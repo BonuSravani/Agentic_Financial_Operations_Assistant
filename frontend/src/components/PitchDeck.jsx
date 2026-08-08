@@ -47,7 +47,7 @@ export default function PitchDeck() {
             </div>
             <div style={{ background: 'rgba(245, 158, 11, 0.05)', border: '1px solid rgba(245, 158, 11, 0.2)', padding: '0.85rem', borderRadius: '10px' }}>
               <strong style={{ color: 'var(--status-amber)' }}>🛡️ Human-in-the-Loop</strong>
-              Automatic escalation for high-risk actions (Refund > ₹5,000 or Fraud).
+              Automatic escalation for high-risk actions (Refund &gt; ₹5,000 or Fraud).
             </div>
           </div>
         </div>
