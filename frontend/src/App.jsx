@@ -20,7 +20,9 @@ export default function App() {
   const [agentLogs, setAgentLogs] = useState([]);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const API_BASE = '/api';
+  // Dynamic API Base: Uses Live Render Backend URL when deployed, or local /api
+  const RENDER_BACKEND_URL = 'https://finops-backend-6uem.onrender.com';
+  const API_BASE = window.location.hostname === 'localhost' ? '/api' : `${RENDER_BACKEND_URL}/api`;
 
   useEffect(() => {
     fetchData();
