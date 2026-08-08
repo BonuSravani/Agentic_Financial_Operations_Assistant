@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Lock, ShieldCheck, Sparkles, AlertCircle } from 'lucide-react';
 
-export default function PiiInspector() {
+export default function PiiInspector({ API_BASE }) {
   const [inputText, setInputText] = useState(
     "My name is Ananya Sharma. My Aadhaar is 2345 6789 0123 and my PAN card is ABCDE1234F. I tried sending INR 4,500 via my debit card 4111222233334444 and UPI ananya.sharma@okaxis, but payment failed. Contact me at +91 9876543210."
   );
   const [sanitizedText, setSanitizedText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const endpoint = API_BASE ? `${API_BASE}/audit-logs/test-pii` : '/api/audit-logs/test-pii';
+
   const handleTestPii = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/audit-logs/test-pii', {
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: inputText })

@@ -138,7 +138,7 @@ export default function App() {
       )}
 
       {activeTab === 'privacy' && (
-        <PiiInspector />
+        <PiiInspector API_BASE={API_BASE} />
       )}
 
       {activeTab === 'analytics' && (
@@ -149,7 +149,7 @@ export default function App() {
       )}
 
       {activeTab === 'create' && (
-        <CreateTicketForm onTicketCreated={() => {
+        <CreateTicketForm API_BASE={API_BASE} onTicketCreated={() => {
           fetchData();
           setActiveTab('console');
         }} />

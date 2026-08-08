@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import { PlusCircle, CheckCircle, Send } from 'lucide-react';
 
-export default function CreateTicketForm({ onTicketCreated }) {
+export default function CreateTicketForm({ onTicketCreated, API_BASE }) {
   const [customerName, setCustomerName] = useState('');
   const [customerId, setCustomerId] = useState('CUST-' + Math.floor(1000 + Math.random() * 9000));
   const [amount, setAmount] = useState('1500');
   const [category, setCategory] = useState('PAYMENTS');
   const [issueDescription, setIssueDescription] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const endpoint = API_BASE ? `${API_BASE}/tickets` : '/api/tickets';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
-      const res = await fetch('/api/tickets', {
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -31,6 +35,8 @@ export default function CreateTicketForm({ onTicketCreated }) {
       }
     } catch (err) {
       console.error("Failed to create ticket:", err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -43,7 +49,7 @@ export default function CreateTicketForm({ onTicketCreated }) {
           Create New Financial Operations Ticket
         </h2>
         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-          Submit a new custom ticket into the Spring Boot backend database to test autonomous AI processing.
+          Submit a new custom ticket into the backend database to test autonomous AI processing.
         </p>
       </div>
 
@@ -106,8 +112,8 @@ export default function CreateTicketForm({ onTicketCreated }) {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem' }}>
-          <Send size={16} /> Submit Ticket to Database
+        <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem' }} disabled={isSubmitting}>
+          <Send size={16} /> {isSubmitting ? 'Submitting to Backend...' : 'Submit Ticket to Database'}
         </button>
 
       </form>
