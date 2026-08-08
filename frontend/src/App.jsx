@@ -9,6 +9,7 @@ import AnalyticsChart from './components/AnalyticsChart';
 import PiiInspector from './components/PiiInspector';
 import CreateTicketForm from './components/CreateTicketForm';
 import PitchDeck from './components/PitchDeck';
+import AiBriefingCard from './components/AiBriefingCard';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('console');
@@ -108,8 +109,14 @@ export default function App() {
             />
           </div>
 
-          {/* Center Column: Live Agent Visualizer & HITL Inbox */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {/* Center Column: AI Briefing Card, Live Agent Visualizer & HITL Inbox */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            
+            <AiBriefingCard
+              ticket={selectedTicket}
+              isProcessing={isProcessing}
+            />
+
             <div style={{ flex: 1 }}>
               <AgentVisualizer
                 ticket={selectedTicket}
