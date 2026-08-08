@@ -8,7 +8,6 @@ import AuditLedger from './components/AuditLedger';
 import AnalyticsChart from './components/AnalyticsChart';
 import PiiInspector from './components/PiiInspector';
 import CreateTicketForm from './components/CreateTicketForm';
-import PitchDeck from './components/PitchDeck';
 import AiBriefingCard from './components/AiBriefingCard';
 
 export default function App() {
@@ -160,10 +159,6 @@ export default function App() {
           fetchData();
           setActiveTab('console');
         }} />
-      )}
-
-      {activeTab === 'pitch' && (
-        <PitchDeck />
       )}
     </div>
   );

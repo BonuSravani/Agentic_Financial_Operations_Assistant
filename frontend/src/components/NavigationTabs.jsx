@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Lock, BarChart3, PlusCircle, Presentation } from 'lucide-react';
+import { LayoutDashboard, Lock, BarChart3, PlusCircle } from 'lucide-react';
 
 export default function NavigationTabs({ activeTab, setActiveTab }) {
   const tabs = [
@@ -7,7 +7,6 @@ export default function NavigationTabs({ activeTab, setActiveTab }) {
     { id: 'privacy', label: 'PII Privacy Inspector', icon: Lock },
     { id: 'analytics', label: 'Enterprise Analytics', icon: BarChart3 },
     { id: 'create', label: 'Create Ticket', icon: PlusCircle },
-    { id: 'pitch', label: 'Hackathon Pitch Deck', icon: Presentation },
   ];
 
   return (
