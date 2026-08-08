@@ -7,7 +7,7 @@ An enterprise-grade, autonomous multi-agent platform for financial operations ac
 ## 🌐 Live Production Deployment
 
 * 🖥️ **Live Web UI (Vercel):** [https://agentic-financial-operations-assist-iota.vercel.app](https://agentic-financial-operations-assist-iota.vercel.app)
-* ⚙️ **Live Backend API (Render):** [https://finops-backend-6uem.onrender.com](https://finops-backend-6uem.onrender.com)
+
 * 💻 **GitHub Repository:** [https://github.com/BayiVivekavardhan/Agentic_Financial_Operations_Assistant](https://github.com/BayiVivekavardhan/Agentic_Financial_Operations_Assistant)
 
 ---
@@ -24,54 +24,7 @@ Financial institutions use disconnected tools (Zendesk CRM, Stripe/Razorpay Paym
 
 ![Architecture Diagram](https://github.com/BayiVivekavardhan/Agentic_Financial_Operations_Assistant/blob/main/img_architecture.jpg?raw=true)
 
-```
-                  ┌──────────────────────────────────────────────┐
-                  │    Incoming Support Ticket / Webhook         │
-                  └──────────────────────┬───────────────────────┘
-                                         │
-                                         ▼
-                  ┌──────────────────────────────────────────────┐
-                  │ 1. Privacy Gateway (PiiRedactorService)     │
-                  │    Sanitizes Aadhaar, PAN, Cards, Phone     │
-                  └──────────────────────┬───────────────────────┘
-                                         │
-                                         ▼
-                  ┌──────────────────────────────────────────────┐
-                  │ 2. Router Agent                              │
-                  │    Classifies Intent & Selects Domain Agents │
-                  └──────┬───────────────┼───────────────┬───────┘
-                         │               │               │
-                         ▼               ▼               ▼
-                  ┌────────────┐  ┌─────────────┐  ┌─────────────┐
-                  │ Support    │  │ Payments    │  │ Fraud       │
-                  │ Agent      │  │ Agent       │  │ Agent       │
-                  └──────┬─────┘  └──────┬──────┘  └──────┬──────┘
-                         │               │                │
-                         └───────────────┼────────────────┘
-                                         │
-                                         ▼
-                  ┌──────────────────────────────────────────────┐
-                  │ 3. Supervisor Agent (Self-Correction Audit)  │
-                  │    Evaluates Policy Rules & Safety Limits    │
-                  └──────────────────────┬───────────────────────┘
-                                         │
-                                   Risk Check
-                                   ┌─────┴─────┐
-                     Low Risk (< ₹5k)          High Risk (>= ₹5k / Fraud)
-                           │                         │
-                           ▼                         ▼
-                  ┌─────────────────┐       ┌──────────────────┐
-                  │ Auto-Resolution │       │ Human Approval   │
-                  │ Gateway Refund  │       │ Manager Inbox    │
-                  └────────┬────────┘       └────────┬─────────┘
-                           │                         │
-                           └────────────┬────────────┘
-                                        │
-                                        ▼
-                  ┌──────────────────────────────────────────────┐
-                  │ 4. Plain-Language Audit & Cost Ledger        │
-                  └──────────────────────────────────────────────┘
-```
+
 
 ---
 
